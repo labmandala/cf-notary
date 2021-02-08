@@ -17,6 +17,9 @@ function loadBook(filename, displayName) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             currentBook = xhr.responseText;
 
+            // remove line breaks and carriage returns and replace with a <br>
+            currentBook = currentBook.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
             // loaded file from disk & streamed back through http to website dynamically
             document.getElementById("fileContent").innerHTML = currentBook;
 
